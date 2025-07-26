@@ -30,9 +30,9 @@ class MakeLoginRequest extends FormRequest
     }
 
     public function tryToLogin(): bool
-    {   
+    {
 
-        if($user = User::query()->where("email", "=", $this->email)->first()) {
+        if ($user = User::query()->where("email", "=", $this->email)->first()) {
             if (Hash::check($this->password, $user->password)) {
                 auth()->login($user);
                 return true;
@@ -40,5 +40,14 @@ class MakeLoginRequest extends FormRequest
         }
 
         return false;
+    }
+
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'O campo de e-mail é obrigatório.',
+            'email.email' => 'Insira um e-mail válido.',
+            'password.required' => 'A senha é obrigatória.',
+        ];
     }
 }

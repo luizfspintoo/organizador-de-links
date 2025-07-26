@@ -31,8 +31,27 @@ class MakeRegisterRequest extends FormRequest
         ];
     }
 
-     public function tryToRegister() {
+    public function tryToRegister()
+    {
         User::query()->create($this->validated());
         return true;
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'O nome é obrigatório.',
+            'name.string' => 'O nome deve ser um texto válido.',
+
+            'surname.required' => 'O sobrenome é obrigatório.',
+            'surname.string' => 'O sobrenome deve ser um texto válido.',
+
+            'email.required' => 'O e-mail é obrigatório.',
+            'email.email' => 'Informe um e-mail válido.',
+            'email.unique' => 'Este e-mail já está cadastrado.',
+
+            'password.required' => 'A senha é obrigatória.',
+            'password.min' => 'A senha deve ter no mínimo 3 caracteres.',
+        ];
     }
 }

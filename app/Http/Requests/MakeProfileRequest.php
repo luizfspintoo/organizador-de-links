@@ -24,10 +24,24 @@ class MakeProfileRequest extends FormRequest
     {
         return [
             "name" => ["required", "string"],
-            'email' => ['required','email', Rule::unique('users')->ignore(auth()->user()->id)],
+            'email' => ['required', 'email', Rule::unique('users')->ignore(auth()->user()->id)],
             "bio" => ["nullable", "max:255"],
             "image" => ["nullable", "image"],
             "id" => ["required"]
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'O nome é obrigatório.',
+            'name.string' => 'O nome deve ser um texto válido.',
+
+            'email.required' => 'O e-mail é obrigatório.',
+            'email.email' => 'Informe um e-mail válido.',
+
+            'bio.required' => 'A bio é obrigatório.',
+            'bio.max' => 'A bio deve ter no maximo 255 caracteres.',
         ];
     }
 }

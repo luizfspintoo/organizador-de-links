@@ -18,6 +18,6 @@ class LoginController extends Controller
             return to_route("dashboard");
         }
 
-        return back()->with(["message" => "Credenciais incorretas"])->withInput();
+        return back()->with(["loginInvalid" => "E-mail ou senha incorretos"])->withInput();
     }
 }
