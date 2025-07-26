@@ -4,8 +4,15 @@ namespace App\Http\Controllers;
 
 class DashboardController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        echo "Estou logado";
+
+        /** @var User $user */
+        $user = auth()->user();
+
+        return view("dashboard", [
+            "user" => $user,
+            "links" => $user->links()->get()
+        ]);
     }
 }
