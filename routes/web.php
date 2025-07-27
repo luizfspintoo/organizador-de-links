@@ -30,11 +30,14 @@ Route::middleware("auth")->group(function () {
         Route::get("/links/{link}/edit", [LinkController::class, "show"])->name("links.edit");
         Route::put("/links/{link}/edit", [LinkController::class, "update"]);
         Route::delete("/links/{link}", [LinkController::class, "destroy"])->name("links.destroy");
+
+        Route::patch('/links/{link}/up', [LinkController::class, 'up'])->name('links.up');
+        Route::patch('/links/{link}/down', [LinkController::class, 'down'])->name('links.down');
     });
 
 
     //profile
-    Route::get("/profile", [ProfileController::class, "index"]);
+    Route::get("/profile", [ProfileController::class, "index"])->name("profile");
     Route::put("/profile", [ProfileController::class, "update"])->name("profile.update");
 
     Route::get("/logout", LogoutController::class)->name("logout");

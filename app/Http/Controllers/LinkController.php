@@ -54,4 +54,16 @@ class LinkController extends Controller
         $link->delete();
         return to_route("dashboard")->with(["success" => "Link deletado com sucesso"]);
     }
+
+     public function up(Link $link)
+    {
+       $link->moveUp();
+       return to_route("dashboard");
+    }
+    
+    public function down(Link $link)
+    {
+        $link->moveDown();
+        return to_route("dashboard");
+    }
 }

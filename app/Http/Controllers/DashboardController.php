@@ -12,7 +12,7 @@ class DashboardController extends Controller
 
         return view("dashboard", [
             "user" => $user,
-            "links" => $user->links()->get()
+            "links" => $user->links()->orderBy('order')->get()
         ]);
     }
 }
