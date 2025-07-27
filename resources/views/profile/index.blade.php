@@ -1,71 +1,67 @@
 <x-layout.app>
-    @if($message = session()->get("success"))
-    <div style="color: green;">{{ $message }}</div>
+    @if($message = session()->get('success'))
+        <div style="color: green;">{{ $message }}</div>
     @endif
+
     <div class="h-screen w-screen pt-6">
         <div class="mb-12 flex justify-center">
-            <img src="/images_app/logo.png" alt="Logo">
+            <x-logo />
         </div>
+
         <section class="max-w-screen-sm mx-auto">
-            <form class="space-y-3" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+            <x-form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
+                @csrf
+
                 <h1 class="text-2xl font-bold mb-6">
                     Perfil
                     <div class="border-b-3 w-8 border-orange-600 pb-1"></div>
                 </h1>
 
-                <div>
-                    <label for="name" class="block text-sm font-semibold">Nome</label>
-                    <input type="hidden" name="id" id="id" value="{{ $user->id }}">
-                    <input type="text" name="name" placeholder="Digite seu nome"
-                        class="bg-[#110F0E] mt-1 block w-full rounded-xl px-4 py-2 border border-zinc-700"
-                        value="{{ $user->name, old('name') }}">
-                    <p class="text-red-500 text-sm mt-1">
-                        @error('name') {{ $message }} @enderror
-                    </p>
+                <div class="mb-4">
+                    <x-label for="name">Nome</x-label>
+                    <x-input type="hidden" name="id" value="{{ $user->id }}" />
+                    <x-input
+                        type="text"
+                        name="name"
+                        placeholder="Informe seu nome"
+                        value="{{ old('name', $user->name) }}"
+                    />
                 </div>
 
-                <div>
-                    <label for="email" class="block text-sm font-semibold">E-mail</label>
-                    <input type="text" name="email" placeholder="Informe seu e-mail"
-                        class="bg-[#110F0E] mt-1 block w-full rounded-xl px-4 py-2 border border-zinc-700"
-                        value="{{ $user->email, old('email') }}">
-                    <p class="text-red-500 text-sm mt-1">
-                        @error('email') {{ $message }} @enderror
-                    </p>
+                <div class="mb-4">
+                    <x-label for="email">Email</x-label>
+                    <x-input
+                        type="email"
+                        name="email"
+                        placeholder="Informe seu e-mail"
+                        value="{{ old('email', $user->email) }}"
+                    />
                 </div>
 
-                <div>
-                    <label for="bio" class="block text-sm font-semibold">Bio</label>
-                    <textarea type="text" name="bio" placeholder="Escreva sobre você"
-                        class="bg-[#110F0E] mt-1 block w-full rounded-xl px-4 py-2 border border-zinc-700">{{ $user->bio, old('bio') }}</textarea>
-                    <p class="text-red-500 text-sm mt-1">
-                        @error('bio') {{ $message }} @enderror
-                    </p>
+                <div class="mb-4">
+                    <x-label for="bio">Bio</x-label>
+                    <x-textarea
+                        name="bio"
+                        placeholder="Escreva sobre você"
+                    >{{ old('bio', $user->bio) }}</x-textarea>
                 </div>
 
-
-                <div>
-                    <label for="image" class="block text-sm font-semibold mt-2 mb-4">Imagem Perfil</label>
-                    <div class="flex gap-8 items-center">
-                        <img class="w-20 rounded-lg" src="/storage/{{$user->image}}" alt="Imagem do Link">
-                        <input type="file" name="image" class="file-input file-input-ghost"
-                            value="{{ $user->image, old('image') }}" />
-                    </div>
+                <div class="mb-6 flex gap-8 items-center">
+                    <img class="w-20 rounded-lg" src="/storage/{{ $user->image }}" alt="Imagem do Perfil">
+                    <x-input type="file" name="image" />
                 </div>
 
                 <div class="text-right space-x-3">
-                    <a href="{{route('dashboard')}}"
+                    <a href="{{ route('dashboard') }}"
                         class="font-semibold py-2 px-6 rounded-full text-white cursor-pointer border border-zinc-700">
                         Voltar
                     </a>
-                    <button type="submit"
-                        class="bg-[#ED712E] font-semibold py-2 px-6 rounded-full text-[#0A0908] cursor-pointer">
+                    <x-button-primary type="submit">
                         Salvar
-                    </button>
+                    </x-button-primary>
                 </div>
-            </form>
+            </x-form>
         </section>
     </div>
 </x-layout.app>

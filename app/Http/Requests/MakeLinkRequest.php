@@ -35,7 +35,7 @@ class MakeLinkRequest extends FormRequest
         return [
             'title.required' => 'O titulo é obrigatório.',
             'title.string' => 'O titulo deve ser um texto válido.',
-            'title.min' => 'O titulo ter no minimo 5 caracteres.',
+            'title.min' => 'O titulo deve ter no minimo 5 caracteres.',
 
             'platform.required' => 'A plataforma é obrigatório.',
             'platform.string' => 'A plataforma deve ser um texto válido.',
