@@ -1,7 +1,7 @@
 ![Logo do Projeto](./.github/logo.png)
 
 
-# Gerenciador de Links
+# Organizador de Links
 
 Aplicativo web onde os usuários podem adicionar links para séries, filmes ou shows em plataformas de streamming, organizando os conteúdos que vão assistir.
 
@@ -9,7 +9,7 @@ Aplicativo web onde os usuários podem adicionar links para séries, filmes ou s
 
 ## 📽️ Demonstração
 
-![Demonstração do Projeto](./.github/gerenciador-de-link.gif)
+![Demonstração do Projeto](./.github/organizador-de-links.gif)
 
 ---
 

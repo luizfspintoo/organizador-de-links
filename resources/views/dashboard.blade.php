@@ -17,7 +17,14 @@
             </div>
             <div>
                 <div>
-                    <div class="scrollbox max-w-screen-lg mx-auto max-h-85 overflow-y-auto mt-12 px-12">
+                    <div class="scrollbox max-w-screen-lg mx-auto h-80 overflow-y-auto mt-12 px-12">
+                        @if($user->links->isEmpty())
+                        <div class="text-center text-zinc-500 py-10">
+                            <p class="text-md">Você ainda não adicionou nenhum conteúdo para assistir.</p>
+                            <p class="text-md">Clique no botão <span class="font-bold">"Adicionar Link"</span> para
+                                começar a montar sua lista!</p>
+                        </div>
+                        @else
                         @foreach($user->links as $link)
                         <div class="flex gap-8 items-center">
                             <div class="flex gap-4">
@@ -68,6 +75,8 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
+
                     </div>
 
                     <x-menu />
