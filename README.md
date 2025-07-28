@@ -93,6 +93,14 @@ php artisan key:generate
 php artisan migrate
 ```
 
+5. Publicando link para armazenamento de imagens
+```bash
+php artisan storage:link
+```
+📌 Certifique-se:
+ - Criar dois diretótios 'images' e 'images_profile' dentro de public/storage.
+- No arquivo .env, verifique se está 'public' em FILESYSTEM_DISK=public
+
 🚀 Rode o projeto
 ```bash
 php artisan serve
